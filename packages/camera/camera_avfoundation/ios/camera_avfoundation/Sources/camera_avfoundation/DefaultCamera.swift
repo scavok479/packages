@@ -149,33 +149,33 @@ final class DefaultCamera: FLTCam, Camera {
     requestedCategory: AVAudioSession.Category,
     options: AVAudioSession.CategoryOptions
   ) {
-    let playCategories: Set<AVAudioSession.Category> = [.playback, .playAndRecord]
-    let recordCategories: Set<AVAudioSession.Category> = [.record, .playAndRecord]
-    let requiredCategories: Set<AVAudioSession.Category> = [
-      requestedCategory, AVAudioSession.sharedInstance().category,
-    ]
+    // let playCategories: Set<AVAudioSession.Category> = [.playback, .playAndRecord]
+    // let recordCategories: Set<AVAudioSession.Category> = [.record, .playAndRecord]
+    // let requiredCategories: Set<AVAudioSession.Category> = [
+    //   requestedCategory, AVAudioSession.sharedInstance().category,
+    // ]
 
-    let requiresPlay = !requiredCategories.isDisjoint(with: playCategories)
-    let requiresRecord = !requiredCategories.isDisjoint(with: recordCategories)
+    // let requiresPlay = !requiredCategories.isDisjoint(with: playCategories)
+    // let requiresRecord = !requiredCategories.isDisjoint(with: recordCategories)
 
-    var finalCategory = requestedCategory
-    if requiresPlay && requiresRecord {
-      finalCategory = .playAndRecord
-    } else if requiresPlay {
-      finalCategory = .playback
-    } else if requiresRecord {
-      finalCategory = .record
-    }
+    // var finalCategory = requestedCategory
+    // if requiresPlay && requiresRecord {
+    //   finalCategory = .playAndRecord
+    // } else if requiresPlay {
+    //   finalCategory = .playback
+    // } else if requiresRecord {
+    //   finalCategory = .record
+    // }
 
-    let finalOptions = AVAudioSession.sharedInstance().categoryOptions.union(options)
+    // let finalOptions = AVAudioSession.sharedInstance().categoryOptions.union(options)
 
-    if finalCategory == AVAudioSession.sharedInstance().category
-      && finalOptions == AVAudioSession.sharedInstance().categoryOptions
-    {
-      return
-    }
+    // if finalCategory == AVAudioSession.sharedInstance().category
+    //   && finalOptions == AVAudioSession.sharedInstance().categoryOptions
+    // {
+    //   return
+    // }
 
-    try? AVAudioSession.sharedInstance().setCategory(finalCategory, options: finalOptions)
+    // try? AVAudioSession.sharedInstance().setCategory(finalCategory, options: finalOptions)
   }
 
   func reportInitializationState() {
