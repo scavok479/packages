@@ -135,27 +135,30 @@
 static void upgradeAudioSessionCategory(AVAudioSessionCategory requestedCategory,
                                         AVAudioSessionCategoryOptions options,
                                         AVAudioSessionCategoryOptions clearOptions) {
-  NSSet *playCategories = [NSSet
-      setWithObjects:AVAudioSessionCategoryPlayback, AVAudioSessionCategoryPlayAndRecord, nil];
-  NSSet *recordCategories =
-      [NSSet setWithObjects:AVAudioSessionCategoryRecord, AVAudioSessionCategoryPlayAndRecord, nil];
-  NSSet *requiredCategories =
-      [NSSet setWithObjects:requestedCategory, AVAudioSession.sharedInstance.category, nil];
-  BOOL requiresPlay = [requiredCategories intersectsSet:playCategories];
-  BOOL requiresRecord = [requiredCategories intersectsSet:recordCategories];
-  if (requiresPlay && requiresRecord) {
-    requestedCategory = AVAudioSessionCategoryPlayAndRecord;
-  } else if (requiresPlay) {
-    requestedCategory = AVAudioSessionCategoryPlayback;
-  } else if (requiresRecord) {
-    requestedCategory = AVAudioSessionCategoryRecord;
-  }
+  // NSSet *playCategories = [NSSet
+  //     setWithObjects:AVAudioSessionCategoryPlayback, AVAudioSessionCategoryPlayAndRecord, nil];
+  // NSSet *recordCategories =
+  //     [NSSet setWithObjects:AVAudioSessionCategoryRecord, AVAudioSessionCategoryPlayAndRecord,
+  //     nil];
+  // NSSet *requiredCategories =
+  //     [NSSet setWithObjects:requestedCategory, AVAudioSession.sharedInstance.category, nil];
+  // BOOL requiresPlay = [requiredCategories intersectsSet:playCategories];
+  // BOOL requiresRecord = [requiredCategories intersectsSet:recordCategories];
+  // if (requiresPlay && requiresRecord) {
+  //   requestedCategory = AVAudioSessionCategoryPlayAndRecord;
+  // } else if (requiresPlay) {
+  //   requestedCategory = AVAudioSessionCategoryPlayback;
+  // } else if (requiresRecord) {
+  //   requestedCategory = AVAudioSessionCategoryRecord;
+  // }
   // options = (AVAudioSession.sharedInstance.categoryOptions & ~clearOptions) | options;
   // if ([requestedCategory isEqualToString:AVAudioSession.sharedInstance.category] &&
   //     options == AVAudioSession.sharedInstance.categoryOptions) {
   //   return;
   // }
-  [AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
+  // [AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback
+  //                                withOptions:AVAudioSessionCategoryOptionMixWithOthers
+  //                                      error:nil];
 }
 #endif
 
@@ -230,13 +233,13 @@ static void upgradeAudioSessionCategory(AVAudioSessionCategory requestedCategory
 #if TARGET_OS_OSX
   // AVAudioSession doesn't exist on macOS, and audio always mixes, so just no-op.
 #else
-  if (mixWithOthers) {
-    upgradeAudioSessionCategory(AVAudioSession.sharedInstance.category,
-                                AVAudioSessionCategoryOptionMixWithOthers, 0);
-  } else {
-    upgradeAudioSessionCategory(AVAudioSession.sharedInstance.category, 0,
-                                AVAudioSessionCategoryOptionMixWithOthers);
-  }
+  // if (mixWithOthers) {
+  //   upgradeAudioSessionCategory(AVAudioSession.sharedInstance.category,
+  //                               AVAudioSessionCategoryOptionMixWithOthers, 0);
+  // } else {
+  //   upgradeAudioSessionCategory(AVAudioSession.sharedInstance.category, 0,
+  //                               AVAudioSessionCategoryOptionMixWithOthers);
+  // }
 #endif
 }
 
