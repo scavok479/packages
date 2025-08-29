@@ -150,12 +150,12 @@ static void upgradeAudioSessionCategory(AVAudioSessionCategory requestedCategory
   } else if (requiresRecord) {
     requestedCategory = AVAudioSessionCategoryRecord;
   }
-  options = (AVAudioSession.sharedInstance.categoryOptions & ~clearOptions) | options;
-  if ([requestedCategory isEqualToString:AVAudioSession.sharedInstance.category] &&
-      options == AVAudioSession.sharedInstance.categoryOptions) {
-    return;
-  }
-  [AVAudioSession.sharedInstance setCategory:requestedCategory withOptions:options error:nil];
+  // options = (AVAudioSession.sharedInstance.categoryOptions & ~clearOptions) | options;
+  // if ([requestedCategory isEqualToString:AVAudioSession.sharedInstance.category] &&
+  //     options == AVAudioSession.sharedInstance.categoryOptions) {
+  //   return;
+  // }
+  [AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
 }
 #endif
 
