@@ -135,6 +135,7 @@
 static void upgradeAudioSessionCategory(AVAudioSessionCategory requestedCategory,
                                         AVAudioSessionCategoryOptions options,
                                         AVAudioSessionCategoryOptions clearOptions) {
+  NSLog(@"Current AVAudioSession category: %@", AVAudioSession.sharedInstance.category);
   // NSSet *playCategories = [NSSet
   //     setWithObjects:AVAudioSessionCategoryPlayback, AVAudioSessionCategoryPlayAndRecord, nil];
   // NSSet *recordCategories =
