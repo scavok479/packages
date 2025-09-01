@@ -302,6 +302,7 @@ NS_INLINE CGFloat radiansToDegrees(CGFloat radians) {
 }
 
 - (void)updatePlayingState {
+  NSLog(@"updatePlayingState - Hanna");
   if (!_isInitialized) {
     return;
   }
@@ -422,11 +423,13 @@ NS_INLINE CGFloat radiansToDegrees(CGFloat radians) {
 
 - (void)playWithError:(FlutterError *_Nullable *_Nonnull)error {
   _isPlaying = YES;
+  NSLog(@"playWithError - Hanna");
   [self updatePlayingState];
 }
 
 - (void)pauseWithError:(FlutterError *_Nullable *_Nonnull)error {
   _isPlaying = NO;
+  NSLog(@"pauseWithError - Hanna");
   [self updatePlayingState];
 }
 

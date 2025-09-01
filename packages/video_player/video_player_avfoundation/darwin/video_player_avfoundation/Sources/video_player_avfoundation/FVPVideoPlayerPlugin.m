@@ -166,6 +166,7 @@ static void upgradeAudioSessionCategory(AVAudioSessionCategory requestedCategory
 - (void)initialize:(FlutterError *__autoreleasing *)error {
 #if TARGET_OS_IOS
   // Allow audio playback when the Ring/Silent switch is set to silent
+  NSLog(@"initialize - Hanna");
   upgradeAudioSessionCategory(AVAudioSessionCategoryPlayback, 0, 0);
 #endif
 
