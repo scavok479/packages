@@ -140,11 +140,13 @@ class AVFoundationVideoPlayer extends VideoPlayerPlatform {
 
   @override
   Future<void> play(int playerId) {
+    print('Hanna - play');
     return _playerWith(id: playerId).play();
   }
 
   @override
   Future<void> pause(int playerId) {
+    print('Hanna - pause');
     return _playerWith(id: playerId).pause();
   }
 
@@ -209,6 +211,7 @@ class AVFoundationVideoPlayer extends VideoPlayerPlatform {
 
   @override
   Future<void> setMixWithOthers(bool mixWithOthers) {
+    print('Hanna - setMixWithOthers = $mixWithOthers');
     return _api.setMixWithOthers(mixWithOthers);
   }
 
@@ -219,6 +222,7 @@ class AVFoundationVideoPlayer extends VideoPlayerPlatform {
 
   @override
   Widget buildViewWithOptions(VideoViewOptions options) {
+    print('Hanna - buildViewWithOptions');
     final int playerId = options.playerId;
     final VideoPlayerViewState? viewState = playerViewStates[playerId];
 

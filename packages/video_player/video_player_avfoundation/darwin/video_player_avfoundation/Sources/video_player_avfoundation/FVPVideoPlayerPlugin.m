@@ -157,9 +157,9 @@ static void upgradeAudioSessionCategory(AVAudioSessionCategory requestedCategory
   //     options == AVAudioSession.sharedInstance.categoryOptions) {
   //   return;
   // }
-  // [AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback
-  //                                withOptions:AVAudioSessionCategoryOptionMixWithOthers
-  //                                      error:nil];
+  [AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback
+                                 withOptions:AVAudioSessionCategoryOptionMixWithOthers
+                                       error:nil];
 }
 #endif
 
