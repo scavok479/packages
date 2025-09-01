@@ -234,13 +234,13 @@ static void upgradeAudioSessionCategory(AVAudioSessionCategory requestedCategory
 #if TARGET_OS_OSX
   // AVAudioSession doesn't exist on macOS, and audio always mixes, so just no-op.
 #else
-  // if (mixWithOthers) {
-  //   upgradeAudioSessionCategory(AVAudioSession.sharedInstance.category,
-  //                               AVAudioSessionCategoryOptionMixWithOthers, 0);
-  // } else {
-  //   upgradeAudioSessionCategory(AVAudioSession.sharedInstance.category, 0,
-  //                               AVAudioSessionCategoryOptionMixWithOthers);
-  // }
+  if (mixWithOthers) {
+    upgradeAudioSessionCategory(AVAudioSession.sharedInstance.category,
+                                AVAudioSessionCategoryOptionMixWithOthers, 0);
+  } else {
+    upgradeAudioSessionCategory(AVAudioSession.sharedInstance.category, 0,
+                                AVAudioSessionCategoryOptionMixWithOthers);
+  }
 #endif
 }
 
